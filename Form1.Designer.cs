@@ -32,18 +32,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.openStudentRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openStudentRecordsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteStudentRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeStudentRecordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAllChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoomOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.licensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gridDisplayStudentRecord = new System.Windows.Forms.DataGridView();
+            this.dataGridViewDisplayStudentRecord = new System.Windows.Forms.DataGridView();
             this.groupBoxStudentRecordEntry = new System.Windows.Forms.GroupBox();
             this.labelAddMessage = new System.Windows.Forms.Label();
             this.comboBoxGrade = new System.Windows.Forms.ComboBox();
@@ -52,7 +51,7 @@
             this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.textBoxStudentID = new System.Windows.Forms.TextBox();
-            this.dtPickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.buttonAddRecord = new System.Windows.Forms.Button();
             this.labelGrade = new System.Windows.Forms.Label();
             this.labelMonthOfAdmission = new System.Windows.Forms.Label();
@@ -66,8 +65,9 @@
             this.labelDeleteMessage2 = new System.Windows.Forms.Label();
             this.labelDeleteMessage1 = new System.Windows.Forms.Label();
             this.btnDeleteRecord = new System.Windows.Forms.Button();
+            this.openAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDisplayStudentRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDisplayStudentRecord)).BeginInit();
             this.groupBoxStudentRecordEntry.SuspendLayout();
             this.groupBoxStudentRecordDisplay.SuspendLayout();
             this.groupBoxStudentRecordDeletion.SuspendLayout();
@@ -83,15 +83,19 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1024, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1154, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // openStudentRecordsToolStripMenuItem
             // 
             this.openStudentRecordsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openAllToolStripMenuItem,
             this.openStudentRecordsToolStripMenuItem1,
+            this.addNewRecordToolStripMenuItem,
+            this.deleteStudentRecordToolStripMenuItem,
             this.closeStudentRecordsToolStripMenuItem,
+            this.closeAllToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.openStudentRecordsToolStripMenuItem.Name = "openStudentRecordsToolStripMenuItem";
             this.openStudentRecordsToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -100,21 +104,42 @@
             // openStudentRecordsToolStripMenuItem1
             // 
             this.openStudentRecordsToolStripMenuItem1.Name = "openStudentRecordsToolStripMenuItem1";
-            this.openStudentRecordsToolStripMenuItem1.Size = new System.Drawing.Size(193, 22);
+            this.openStudentRecordsToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
             this.openStudentRecordsToolStripMenuItem1.Text = "Open Student Records";
             this.openStudentRecordsToolStripMenuItem1.Click += new System.EventHandler(this.openStudentRecordsToolStripMenuItem1_Click);
+            // 
+            // addNewRecordToolStripMenuItem
+            // 
+            this.addNewRecordToolStripMenuItem.Name = "addNewRecordToolStripMenuItem";
+            this.addNewRecordToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.addNewRecordToolStripMenuItem.Text = "Add New Student Record";
+            this.addNewRecordToolStripMenuItem.Click += new System.EventHandler(this.addNewRecordToolStripMenuItem_Click);
+            // 
+            // deleteStudentRecordToolStripMenuItem
+            // 
+            this.deleteStudentRecordToolStripMenuItem.Name = "deleteStudentRecordToolStripMenuItem";
+            this.deleteStudentRecordToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.deleteStudentRecordToolStripMenuItem.Text = "Delete Student Record";
+            this.deleteStudentRecordToolStripMenuItem.Click += new System.EventHandler(this.deleteStudentRecordToolStripMenuItem_Click);
             // 
             // closeStudentRecordsToolStripMenuItem
             // 
             this.closeStudentRecordsToolStripMenuItem.Name = "closeStudentRecordsToolStripMenuItem";
-            this.closeStudentRecordsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.closeStudentRecordsToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.closeStudentRecordsToolStripMenuItem.Text = "Close Student Records";
             this.closeStudentRecordsToolStripMenuItem.Click += new System.EventHandler(this.closeStudentRecordsToolStripMenuItem_Click);
+            // 
+            // closeAllToolStripMenuItem
+            // 
+            this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.closeAllToolStripMenuItem.Text = "Close All";
+            this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.closeAllToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -132,64 +157,36 @@
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.undoToolStripMenuItem.Text = "Undo                   Ctrl+Z";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.redoToolStripMenuItem.Text = "Redo                    Ctrl+Y";
+            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zoomInToolStripMenuItem,
-            this.zoomOutToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
-            // zoomInToolStripMenuItem
-            // 
-            this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.zoomInToolStripMenuItem.Text = "Zoom In";
-            // 
-            // zoomOutToolStripMenuItem
-            // 
-            this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.zoomOutToolStripMenuItem.Text = "Zoom Out";
-            // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userGuideToolStripMenuItem,
-            this.licensesToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // userGuideToolStripMenuItem
+            // dataGridViewDisplayStudentRecord
             // 
-            this.userGuideToolStripMenuItem.Name = "userGuideToolStripMenuItem";
-            this.userGuideToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.userGuideToolStripMenuItem.Text = "User Guide";
-            // 
-            // licensesToolStripMenuItem
-            // 
-            this.licensesToolStripMenuItem.Name = "licensesToolStripMenuItem";
-            this.licensesToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.licensesToolStripMenuItem.Text = "Licenses";
-            // 
-            // gridDisplayStudentRecord
-            // 
-            this.gridDisplayStudentRecord.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.gridDisplayStudentRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridDisplayStudentRecord.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.gridDisplayStudentRecord.Location = new System.Drawing.Point(0, 19);
-            this.gridDisplayStudentRecord.Name = "gridDisplayStudentRecord";
-            this.gridDisplayStudentRecord.Size = new System.Drawing.Size(693, 590);
-            this.gridDisplayStudentRecord.TabIndex = 2;
+            this.dataGridViewDisplayStudentRecord.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dataGridViewDisplayStudentRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDisplayStudentRecord.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewDisplayStudentRecord.Location = new System.Drawing.Point(0, 19);
+            this.dataGridViewDisplayStudentRecord.Name = "dataGridViewDisplayStudentRecord";
+            this.dataGridViewDisplayStudentRecord.Size = new System.Drawing.Size(798, 590);
+            this.dataGridViewDisplayStudentRecord.TabIndex = 2;
             // 
             // groupBoxStudentRecordEntry
             // 
@@ -200,7 +197,7 @@
             this.groupBoxStudentRecordEntry.Controls.Add(this.textBoxLastName);
             this.groupBoxStudentRecordEntry.Controls.Add(this.textBoxFirstName);
             this.groupBoxStudentRecordEntry.Controls.Add(this.textBoxStudentID);
-            this.groupBoxStudentRecordEntry.Controls.Add(this.dtPickerDateOfBirth);
+            this.groupBoxStudentRecordEntry.Controls.Add(this.dateTimePickerDateOfBirth);
             this.groupBoxStudentRecordEntry.Controls.Add(this.buttonAddRecord);
             this.groupBoxStudentRecordEntry.Controls.Add(this.labelGrade);
             this.groupBoxStudentRecordEntry.Controls.Add(this.labelMonthOfAdmission);
@@ -271,14 +268,15 @@
             this.textBoxStudentID.Size = new System.Drawing.Size(240, 23);
             this.textBoxStudentID.TabIndex = 9;
             // 
-            // dtPickerDateOfBirth
+            // dateTimePickerDateOfBirth
             // 
-            this.dtPickerDateOfBirth.CustomFormat = "MMMMM dd, yyyy";
-            this.dtPickerDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtPickerDateOfBirth.Location = new System.Drawing.Point(93, 159);
-            this.dtPickerDateOfBirth.Name = "dtPickerDateOfBirth";
-            this.dtPickerDateOfBirth.Size = new System.Drawing.Size(227, 23);
-            this.dtPickerDateOfBirth.TabIndex = 8;
+            this.dateTimePickerDateOfBirth.CustomFormat = "";
+            this.dateTimePickerDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDateOfBirth.Location = new System.Drawing.Point(93, 159);
+            this.dateTimePickerDateOfBirth.Name = "dateTimePickerDateOfBirth";
+            this.dateTimePickerDateOfBirth.Size = new System.Drawing.Size(227, 23);
+            this.dateTimePickerDateOfBirth.TabIndex = 8;
+            this.dateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePickerDateOfBirth_ValueChanged);
             // 
             // buttonAddRecord
             // 
@@ -288,6 +286,7 @@
             this.buttonAddRecord.TabIndex = 7;
             this.buttonAddRecord.Text = "Add Record";
             this.buttonAddRecord.UseVisualStyleBackColor = true;
+            this.buttonAddRecord.Click += new System.EventHandler(this.buttonAddRecord_Click);
             // 
             // labelGrade
             // 
@@ -354,11 +353,11 @@
             // 
             // groupBoxStudentRecordDisplay
             // 
-            this.groupBoxStudentRecordDisplay.Controls.Add(this.gridDisplayStudentRecord);
+            this.groupBoxStudentRecordDisplay.Controls.Add(this.dataGridViewDisplayStudentRecord);
             this.groupBoxStudentRecordDisplay.Font = new System.Drawing.Font("Cambria", 9.75F);
             this.groupBoxStudentRecordDisplay.Location = new System.Drawing.Point(344, 56);
             this.groupBoxStudentRecordDisplay.Name = "groupBoxStudentRecordDisplay";
-            this.groupBoxStudentRecordDisplay.Size = new System.Drawing.Size(669, 609);
+            this.groupBoxStudentRecordDisplay.Size = new System.Drawing.Size(798, 609);
             this.groupBoxStudentRecordDisplay.TabIndex = 5;
             this.groupBoxStudentRecordDisplay.TabStop = false;
             this.groupBoxStudentRecordDisplay.Text = "Student Record Display";
@@ -405,6 +404,14 @@
             this.btnDeleteRecord.TabIndex = 0;
             this.btnDeleteRecord.Text = "Delete Record";
             this.btnDeleteRecord.UseVisualStyleBackColor = true;
+            this.btnDeleteRecord.Click += new System.EventHandler(this.btnDeleteRecord_Click);
+            // 
+            // openAllToolStripMenuItem
+            // 
+            this.openAllToolStripMenuItem.Name = "openAllToolStripMenuItem";
+            this.openAllToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.openAllToolStripMenuItem.Text = "Open All";
+            this.openAllToolStripMenuItem.Click += new System.EventHandler(this.openAllToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -413,7 +420,7 @@
             this.BackColor = System.Drawing.Color.MistyRose;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1024, 713);
+            this.ClientSize = new System.Drawing.Size(1154, 713);
             this.Controls.Add(this.groupBoxStudentRecordDeletion);
             this.Controls.Add(this.groupBoxStudentRecordDisplay);
             this.Controls.Add(this.groupBoxStudentRecordEntry);
@@ -425,7 +432,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDisplayStudentRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDisplayStudentRecord)).EndInit();
             this.groupBoxStudentRecordEntry.ResumeLayout(false);
             this.groupBoxStudentRecordEntry.PerformLayout();
             this.groupBoxStudentRecordDisplay.ResumeLayout(false);
@@ -448,11 +455,7 @@
         private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userGuideToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem licensesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zoomInToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zoomOutToolStripMenuItem;
-        private System.Windows.Forms.DataGridView gridDisplayStudentRecord;
+        private System.Windows.Forms.DataGridView dataGridViewDisplayStudentRecord;
         private System.Windows.Forms.GroupBox groupBoxStudentRecordEntry;
         private System.Windows.Forms.Label labelDateOfBirth;
         private System.Windows.Forms.Label labelLastName;
@@ -467,7 +470,7 @@
         private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.TextBox textBoxStudentID;
-        private System.Windows.Forms.DateTimePicker dtPickerDateOfBirth;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDateOfBirth;
         private System.Windows.Forms.Button buttonAddRecord;
         private System.Windows.Forms.GroupBox groupBoxStudentRecordDisplay;
         private System.Windows.Forms.Label labelAddMessage;
@@ -475,6 +478,10 @@
         private System.Windows.Forms.Label labelDeleteMessage2;
         private System.Windows.Forms.Label labelDeleteMessage1;
         private System.Windows.Forms.Button btnDeleteRecord;
+        private System.Windows.Forms.ToolStripMenuItem addNewRecordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteStudentRecordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openAllToolStripMenuItem;
     }
 }
 

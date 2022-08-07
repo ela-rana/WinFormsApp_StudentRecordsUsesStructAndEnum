@@ -12,15 +12,11 @@ namespace StudentDataStoreUsingStruct
 {
     public partial class Form1 : Form
     {
-        List<Student> students;
+        List<Student> students; //to create a list of student records
+
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,16 +40,143 @@ namespace StudentDataStoreUsingStruct
                     DateOfBirth = DateTime.Parse("5/20/2006"), Address = "623 Indy Raceway, Daytona, FL 23753",
                     MonthOfAdmission = Month.June, Grade = LetterGrade.B}
             };
+            dataGridViewDisplayStudentRecord.DataSource=students; //to set the students list as the source
+                                                                  //to display within the datagridview
+            comboBoxGrade.DataSource = Enum.GetValues(typeof(LetterGrade)); //to set possible values for the
+                //grade combobox as all the possible values in the enum LetterGrade
+            comboBoxGrade.SelectedIndex = -1;   //to keep the combobox blank until user selects a dropdown 
+                //option by setting the index to a value lower than the first index
+            comboBoxMonthOfAdmission.DataSource = Enum.GetValues(typeof(Month)); //to set possible values for
+                //month of admission combobox as all the possible values in the enum Month
+            comboBoxMonthOfAdmission.SelectedIndex = 1; //to keep the combobox blank until user selects a dropdown 
+                //option by setting the index to a value lower than the first index
         }
+
 
         private void openStudentRecordsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            groupBoxStudentRecordDisplay.Visible = true;
+            groupBoxStudentRecordDisplay.Visible = true;    //to make the Student Record Display groupbox visible
         }
 
+        private void addNewRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBoxStudentRecordEntry.Visible = true;    //to make the Student Record Entry groupbox visible
+        }
+
+        private void deleteStudentRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            groupBoxStudentRecordDeletion.Visible = true;    //to make the Student Record Deletion groupbox visible
+        }        
+        
         private void closeStudentRecordsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            groupBoxStudentRecordDisplay.Visible = false;    //to make the Student Record Display groupbox invisible
+                                                             //when user clicks the close menu item
+        }
+
+        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //to make all groupboxes invisible when the user clicks the Close All menu choice
             groupBoxStudentRecordDisplay.Visible = false;
+            groupBoxStudentRecordDeletion.Visible = false;
+            groupBoxStudentRecordEntry.Visible = false;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //to close the app when the user presses the Exit Menu choice
+            Application.Exit();
+        }
+
+        private void textBoxStudentID_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+            "This functionality is currently unavailable.\nPlease press CTRL+Z on your keyboard to Undo.");
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+            "This functionality is currently unavailable.\nPlease press CTRL+Y on your keyboard to Redo.");
+        }
+
+        private void buttonAddRecord_Click(object sender, EventArgs e)
+        {
+            if(textBoxStudentID.Text != String.Empty && textBoxFirstName.Text != String.Empty &&
+               textBoxLastName.Text != String.Empty && textBoxAddress.Text != String.Empty &&
+               dateTimePickerDateOfBirth.Text != String.Empty && comboBoxGrade.Text != String.Empty && 
+               comboBoxMonthOfAdmission.Text != String.Empty)   //to make sure all fields are filled before
+                                                                //record is added to our student records list
+            {
+                Student st = new Student()
+                {
+                    StudentID = Int32.Parse(textBoxStudentID.Text),
+                    FirstName = textBoxFirstName.Text,
+                    LastName = textBoxLastName.Text,
+                    Address = textBoxAddress.Text,
+                    DateOfBirth = DateTime.Parse(dateTimePickerDateOfBirth.Text),
+                    Grade = (LetterGrade)comboBoxGrade.SelectedIndex,
+                    MonthOfAdmission = (Month)comboBoxMonthOfAdmission.SelectedIndex
+                };  //to create a new temp student record variable st to hold user entered student record
+                students.Add(st);   //to add the newly entered record in st to our students list
+                MessageBox.Show("Record successfully added");
+                RefreshData();  //to clear everything we just filled and display the updated students list
+            }
+        }
+
+        /// <summary>
+        /// A method to clear all filled values in the groupBoxStudentRecordEntry and to refresh the datagrid 
+        /// with most current number of records
+        /// </summary>
+        private void RefreshData()
+        {
+            textBoxStudentID.Clear(); //blanks out and clears any text currently in the Employee ID textbox
+            textBoxFirstName.Clear();   //clears First Name textbox
+            textBoxLastName.Clear();    //clears Last Name textbox
+            textBoxAddress.Clear();  //clears Salary textbox
+            comboBoxGrade.SelectedIndex = -1;    //to keep the combobox blank until user selects a dropdown 
+                                                 //option by setting the index to a value lower than the first index
+            comboBoxMonthOfAdmission.SelectedIndex = -1; //to keep the combobox blank until user selects a dropdown 
+                                                         //option by setting the index to a value lower than the first index 
+            dateTimePickerDateOfBirth.CustomFormat = "";    //to reset datetimepicker to show a blank value
+            dataGridViewDisplayStudentRecord.DataSource = null; //to clear the datagridview before it can be refreshed
+            dataGridViewDisplayStudentRecord.DataSource = students;    //to display the latest student data to grid
+        }
+
+
+        private void btnDeleteRecord_Click(object sender, EventArgs e)
+        {
+            if (students.Count != 0)    //As long as the students list is not blank
+            {
+                students.RemoveAt(dataGridViewDisplayStudentRecord.CurrentRow.Index);   //the record at the 
+                                                //selected row is deleted
+                RefreshData();  //then the datagrid is refreshed
+            }
+            else
+            {
+                MessageBox.Show("There are no records to delete."); //if the students list is blank and the 
+                            //delete record button is clicked, this error message is displayed
+            }
+
+        }
+
+        private void dateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerDateOfBirth.CustomFormat = "MMMMM dd, yyyy";  //the datetimepicker is initially blank
+            //this statement causes the datetimepicker to display the date once a date is selected
+        }
+
+        private void openAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //to make all groupboxes visible when the user clicks the Open All menu choice
+            groupBoxStudentRecordDisplay.Visible = true;
+            groupBoxStudentRecordDeletion.Visible = true;
+            groupBoxStudentRecordEntry.Visible = true;
+
         }
     }
 }
